@@ -60,7 +60,21 @@ belt = 15
 shoes = 60
 print (money)
 print ("buying a hat")
-print (money-hat)
-print ()
-
-
+money -= hat
+print ("You now have the following amount left over :")
+print (money)
+print ("")
+print ("buying a pants")
+money -= pants
+print ("You now have the following amount left over :")
+print (money)
+print("")
+print ("buying a belt")
+money -= belt
+print ("You now have the following amount left over :")
+print (money)
+print("")
+print ("buying some shoes")
+money -= shoes
+print ("You now have the following amount left over :")
+print (money)
