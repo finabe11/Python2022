@@ -40,7 +40,6 @@ print(f"Random noun: {name_a_noun} \n")
 print(f"Random verb: {name_a_verb} \n")
 print(f"Your favourite movie and book are {favourite_movie} and {name_a_book} \n")
 print(f"Random adjective, noun and verb: {name_a_adjective}, {name_a_noun} and {name_a_verb} \n")
-
 #12
 user_age = int(input("How old are you? \n"))
 #13
@@ -58,13 +57,40 @@ print(f"If you share your apples with you friends they will get {user_apples / u
 print("")
 print(f"If you share your apples with you friends evenly there will be {user_apples % user_friends} apples left over")
 print("")
-"""
 #18
 user_pizza = int(input("How many pizza's do you want? \n"))
 #19
 user_people = int(input("How many people are you feeding? \n"))
 #20
-print(f"If you share your pizza's with you friends they will get {user_pizza * 8 / user_people} slices each")
+print(f"If you share your pizza's with you friends they will get {user_pizza * 8 // user_people} slices each")
 print("")
 print(f"If you share your pizza's with you friends evenly there will be {user_pizza % user_people} slices left over")
-
+print("")
+#21
+user_money = int(input("How many dollars do you have?\n"))
+#22
+TV_cost = int(input ("How much money does a TV cost?\n"))
+#23
+print(f"You have {user_money - TV_cost} dollars after you buy a TV ")
+print("")
+#24
+print(f"There is a 20% off sale on TV's and the Tv will cost {0.8 * TV_cost} if you wait for the sale.")
+print("")
+#25
+user_bitcoin = int(input("How many Bitcoin do you have? \n"))
+#26
+bitcoin_price = 57334.53
+#27
+print(f"Your cryto portfolio is worth {user_bitcoin * bitcoin_price} dollars")
+print("")
+#28
+user_wage = int(input("How much money do you earn in a week? \n"))
+#29
+tax_rate = float(input("What is the tax rate as a decimal? \n"))
+#30
+print(f"You take home {(1 - tax_rate) * user_wage} dollars ever week.")
+print("")
+"""
+#31
+book_name = input("Name a book? \n")
+print(book_name.upper())
