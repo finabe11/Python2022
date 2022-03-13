@@ -93,4 +93,15 @@ print("")
 """
 #31
 book_name = input("Name a book? \n")
+print("")
+#32
 print(book_name.upper())
+print(book_name.lower())
+print(book_name.title())
+print("")
+#33
+number = int(input("Pick a number \n"))
+print("")
+#34
+print(book_name  \n * number )
+print("")
