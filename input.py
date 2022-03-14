@@ -103,5 +103,5 @@ print("")
 number = int(input("Pick a number \n"))
 print("")
 #34
-print(book_name  \n * number )
+print(book_name * number )
 print("")

@@ -78,3 +78,4 @@ print ("buying some shoes")
 money -= shoes
 print ("You now have the following amount left over :")
 print (money)
+print ("")
