@@ -97,7 +97,7 @@ torch.description = "An old torch. When you try it you see a faint light. Might 
 #Add Items to Bags
 #define Bags
 mess_hall.items.add(red_keycard)
-cargo.items.add(knife)
+cargo.items.add(Knife)
 docking.items.add(torch)
 escape_pods.items.add(oxygen)
 
@@ -138,6 +138,52 @@ def travel(direction):
 def look():
 	print(current_room)
 	print(f"There are exits to the {current_room.exits()}.")
+	if len(current_room.items) > 0:     #if there are some items in the room
+		print("You also see:")
+		for item in current_room.items:
+			print(item)      #print out each item
+
+
+@when("take ITEM")
+@when("grab ITEM")
+@when("pick up ITEM")
+
+
+@when("get ITEM")
+def pickup(item):
+	if item in current_room.items:
+		t = current_room.items.take(item)
+		inventory.add(t)
+		print(f"You pick up the {item}")
+	else:
+		print(f"You don't see a {item}")
+
+
+@when("inventory")
+@when("inv")
+@when("show inventory")
+@when("bag")
+@when("what is in my pocket")
+@when("what is in my bag")
+def player_inventory():
+	print("You are carrying")
+	for item in inventory:
+		print(item)
+
+@when("look at ITEM")
+def look_at(item):
+	if item in inventory:
+		t = inventory.find(item)
+		print(t.description)
+	else:
+		print(f"You aren't carrying an {item}")
+
+
+
+
+
+
+
 
 
 
