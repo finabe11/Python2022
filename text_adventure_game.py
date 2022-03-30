@@ -169,6 +169,7 @@ def player_inventory():
 	print("You are carrying")
 	for item in inventory:
 		print(item)
+	if 
 
 @when("look at ITEM")
 def look_at(item):
@@ -180,13 +181,7 @@ def look_at(item):
 
 
 
-
-
-
-
-
-
-
+dtrfrh
 
 def main():
 	start()
