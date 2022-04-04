@@ -9,13 +9,35 @@ starting_beach = Room("""
 	you see that after the plam trees the forest get small and more thick. You heard some weird calling that sounds human, """)
 
 Path = Room("""
-	You start walking down the path, you see movement farther down the path, you see a bush that looks great for hiding in.""")
+	You start walking down the path, with trees towdering over you, you stand on a tiwg, is snaps giving you am fright, then you see movement farther down the path, you see a bush that looks great for hiding in.""")
 
 Bush = Room("""
+	You can just see out of the bush you see some people with cloths around there wasts carrying spears and sheilds, you reasles
+	that they are cannibals, """)
+
+cannibals_village = Room(""" 
 	""")
 
+cannibal something/house
 
 
+second_path = Room(""" 
+	You see another path that looks similar to the one you came through the beach. """)
+
+Third_beach = Room("""
+	Through the trees you glimpse something blue, you brust out of the trees to find a beach slowly sloping down, with the sea about 100 meters away,
+	 to spot something farther down the beach, its a jetty with a boat at the end of it, you start running.""")
+
+Forest = Room("""
+	You have decided that it would be safer to go throught the forest, you have a hard time going throught the forest,
+	with all it's vines and branches.""")
+
+Second_beach = Room("""
+	You stumble out of the forest on to a sand beach covered in shells, with no idea of which way you have come. >you have something glithing or food or have a storage thing from the cannibals""")
+
+Death_forest = Room("""
+	You start wayding throught the forest againg and you sand on something slipery and you fall heaverly and then you feel something bit you it very painful you look doen and see a snake,
+	you try and move but you are prazlyed, you died a slow and painful death.""")
 
 print("backstory")
 
