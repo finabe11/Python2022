@@ -15,11 +15,13 @@ Bush = Room("""
 	You can just see out of the bush you see some people with cloths around there wasts carrying spears and sheilds, you reasles
 	that they are cannibals, """)
 
-cannibals_village = Room(""" 
-	""")
+cannibals_village = Room(""" You look ahead and see some things resembling houses, you walk forward to look closer,
+	you see that the house are made with stick stuck together with dried mud then plasered with leaves in some areas,
+	you look up there are heaps of these houses, with looks like a massive farther away,
+	while you are looking around you see another path""")
 
-cannibal something/house
-
+Cannibal_bosses_house = Room(""" You start walking towards the large house to see if you can find anything, something comes out of the big hut, it is a very strong looking cannibals, 
+	it starts running towards you """)
 
 second_path = Room(""" 
 	You see another path that looks similar to the one you came through the beach. """)
@@ -39,7 +41,7 @@ Death_forest = Room("""
 	You start wayding throught the forest againg and you sand on something slipery and you fall heaverly and then you feel something bit you it very painful you look doen and see a snake,
 	you try and move but you are prazlyed, you died a slow and painful death.""")
 
-print("backstory")
+print("")
 
 
 
