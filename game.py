@@ -41,8 +41,12 @@ Death_forest = Room("""
 	You start wayding throught the forest againg and you sand on something slipery and you fall heaverly and then you feel something bit you it very painful you look doen and see a snake,
 	you try and move but you are prazlyed, you died a slow and painful death.""")
 
-print("")
+#this is my back ground story
+print(""" You are Francis Drake.
+	You are taking a holiday form being an explorer, you have decied to take a cruise, the cruise""")
 
+#connections for Rooms
+current_room = starting_beach
 
 
 
