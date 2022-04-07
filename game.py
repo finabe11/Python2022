@@ -15,7 +15,7 @@ Bush = Room("""
 	You can just see out of the bush you see some people with cloths around there wasts carrying spears and sheilds, you reasles
 	that they are cannibals, """)
 
-cannibals_village = Room(""" You look ahead and see some things resembling houses, you walk forward to look closer,
+cannibal_village = Room(""" You look ahead and see some things resembling houses, you walk forward to look closer,
 	you see that the house are made with stick stuck together with dried mud then plasered with leaves in some areas,
 	you look up there are heaps of these houses, with looks like a massive farther away,
 	while you are looking around you see another path""")
@@ -43,11 +43,25 @@ Death_forest = Room("""
 
 #this is my back ground story
 print(""" You are Francis Drake.
-	You are taking a holiday form being an explorer, you have decied to take a cruise, the cruise""")
+	You are taking a holiday form being an explorer, you have decied to take a cruise, you are out on the side of the cruise at night looking at the ocean, you heard yelling,
+	you turn to the front of the boat and see a very vage shape in front of the boat, you realse is a large rock sticking out of the water, the boat is heading striaght for it, you brace for impact by lying down,
+	theres a tremendous bang, the whole boat pitches forwards and you are throwen off the boat, into the ptich black sea. 
+  you swim up to the surface and  """)
 
 #connections for Rooms
 current_room = starting_beach
+starting_beach.east = Path 
+Path.west = Bush 
+Path.north = cannibal_village
+cannibal_village.west = Cannibal_bosses_house
+cannibal_village.east = second_path
+second_path.north = Third_beach
+starting_beach.west = Forest
+Bush.west = Forest
+Forest.west = Second_beach
+Forest.north = Death_forest
 
+#define and describe Items
 
 
 def main():
