@@ -9,11 +9,9 @@ starting_beach = Room("""
 	You see that after the palm trees the forest get small and more thick. You heard some weird calling that sounds human. You look around and see something sticking up in the ground, it looks like a weapon of some sort.""")
 
 Path = Room("""
-	You start walking down the path, with trees towering over you. You stand on a twig, it snaps giving you a fright. Then you see movement farther down the path. You see a bush that looks great for hiding in.""")
+	You start walking down the path, with trees towering over you. You stand on a twig, it snaps giving you a fright. Then you see movement farther down the path. You see some people in the distance with clothes around their waists carrying spears and shields. You realise
+	that they are cannibals. They turn down another path, you sigh a sigh of relief. You carry on""")
 
-Bush = Room("""
-	You can just see out of the bush. You see some people with clothes around their waists carrying spears and shields. You realise
-	that they are cannibals. """)
 
 cannibal_village = Room(""" You look ahead and see some things resembling houses. You walk forward to look closer.
 	You see that the house are made with sticks stuck together with dried mud then plastered with leaves in some areas.
@@ -27,14 +25,14 @@ second_path = Room("""
 
 Third_beach = Room("""
 	Through the trees you glimpse something blue. You burst out of the trees to find a another beach slowly sloping down, with the sea about 100 meters away.
-	You spot something farther down the beach. It's a jetty with a boat at the end of it. You start running.""")
+	You spot something farther down the beach. It's a jetty with a boat at the end of it. You start running. You see some shapes running towards you, it's the cannibals with sheilds for early , you run harder. You get to the boat. """)
 
 Forest = Room("""
 	You have decided that it would be safer to go throught the forest. You have a hard time cutting throught the forest,
 	with all it's vines and branches.""")
 
 Second_beach = Room("""
-	You stumble out of the forest on to a sandy beach covered in shells, with no idea of which way you have come. You look down the beach and see a small hut, mabye made by another traveler. You walk towards it and see inside that there  is a can of some sort. """)
+	You stumble out of the forest on to a sandy beach covered in shells, with no idea of which way you have come. You look down the beach and see a small hut, mabye made by another traveler. You walk towards it and see inside that there is a can of some sort. """)
 
 Death_forest = Room("""
 	You start wading through the forest again and you stand on something slippery. You fall heavily and then you feel something bite you. It's very painful. You look down and see a snake.
@@ -52,18 +50,17 @@ print(""" You are Francis Drake.
   You feel your consciousness stir. You feel something in your eyes, it's sand. You quicky open your eyes and sit up realising that you are alive. You look around. You are on the island you saw in the distance. You look down and see the briefcase next to you.""")
 
 #the commands so people know how to play
-print("The commands you can use are look around (look), go north,south,east and west, grab/take, use and inventory (inv). You type the command in and then press enter")
+print("The commands you can use are look around (look), go north,south,east and west, grab/take, use, inventory (inv) and look at an item. You type the command in and then press enter")
 
 #connections for Rooms
 current_room = starting_beach
 starting_beach.east = Path 
-Path.west = Bush 
+Path.west = Forest 
 Path.north = cannibal_village
 cannibal_village.west = Cannibal_bosses_house
 cannibal_village.east = second_path
 second_path.north = Third_beach
 starting_beach.west = Forest
-Bush.west = Forest
 Forest.west = Second_beach
 Forest.north = Death_forest
 
@@ -87,7 +84,7 @@ briefcase.descritption = "A briefcase full of money, might be useful if you get 
 starting_beach.items.add(briefcase)
 starting_beach.items.add(machete)
 Second_beach.items.add(petrol)
-Cannibal_bosses_house.items.add(key)
+
 
 #define variable
 current_room = starting_beach
@@ -99,6 +96,9 @@ boss = True
 
 #binds
 
+#this make it so you can move using go north or go south
+#In the middle part it make a room (forest) locked and if you have the machete you can go through but if you dont you can't go through
+#and the last part make it so if you go into a certain room, the death forest, you automatically die
 @when("go DIRECTION")
 def travel(direction):
   global current_room
@@ -111,9 +111,6 @@ def travel(direction):
   	print("You use the machete to slash a path through the forest")
   	enter = True 
   	return
-
-
-
  
   if direction in current_room.exits():
     current_room = current_room.exit(direction)
@@ -122,8 +119,18 @@ def travel(direction):
     print(current_room.exits())
     if current_room == Death_forest:
     	quit()
+    if current_room == Third_beach and inventory.find("petrol") and inventory.find("key") and inventory.find("briefcase"):
+    	print("You fill the boat up with petrol and put the key into the boat and start it and you drive away while hearing the cannibals yelling. You drive the boat back to civilization and you become famous and rich form the money from the briefcase")
+    	quit()
+    elif current_room == Third_beach and inventory.find("petrol") and inventory.find("key"):
+    	print("You fill the boat up with petrol and put the key into the boat and start it and you drive away while hearing the cannibals yelling. You drive off and when you can't see the island any more and then you realise that you forgot the briefcase full of money, when you get back to civilization, you are blamed for the cruise cashing and you are still poor, so you will be always trying to pay for the boat you definitely crashed")
+    	quit()
+    elif current_room == Third_beach:
+    	print("You need both petrol and a key to start the boat too get of the island")
+    	return
 
 
+#this makes it so if you type look, it will print the current room and if there are any exits to the room and if there are any items in the room
 @when("look")
 def look():
 	print(current_room)
@@ -131,9 +138,11 @@ def look():
 	if len(current_room.items) > 0:     #if there are some items in the room
 		print("You also see:")
 		for item in current_room.items:
-			print(item)      #print out each item
+			print(item) #print out each item
 
+      
 
+#this makes it so you take items and it puts them in your inventory, and if there isn't the item in that room it will say you don't see that item
 @when("take ITEM")
 @when("grab ITEM")
 @when("pick up ITEM")
@@ -147,7 +156,7 @@ def pickup(item):
 	else:
 		print(f"You don't see a {item}")
 
-
+#this shows you what is in your inventory, if you have anything
 @when("inventory")
 @when("inv")
 @when("show inventory")
@@ -159,7 +168,7 @@ def player_inventory():
 	for item in inventory:
 		print(item)
 	
-
+#if you type this it will print the descripion of the item
 @when("look at ITEM")
 def look_at(item):
 	if item in inventory:
@@ -168,15 +177,20 @@ def look_at(item):
 	else:
 		print(f"You aren't carrying an {item}")
 
-
-
-
-
+#this kill the boss
+@when("kill cannibal")
+@when("fight cannibal")
+@when("slay boss")
+@when("use machete")
 @when("kill boss")
 @when("fight boss")
 def fight_boss():
 	if inventory.find("machete") and current_room == Cannibal_bosses_house:
-		print("print your fight ........ Boss drops item")
+		print("""The very big cannibal lunges towards you swing his fist at you, you do what only natural. 
+			You duck, flinging you body to the ground. You realise that you have a machete """)
+		Cannibal_bosses_house.items.add(key)
+
+
 
 
 
